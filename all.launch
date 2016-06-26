@@ -1,0 +1,9 @@
+<launch>
+	  <!--include file="$(find arlobot_navigation)/launch/amcl_demo.launch.xml"/-->
+	  <include file="$(find robot_serial)/launch/robot_serial.launch"/>
+	  <include file="$(find robot_laser_tf)/launch/laser_tf.launch"/>
+	  <include file="$(find yocs_cmd_vel_mux)/launch/standalone.launch"/>
+	  <include file="$(find yocs_velocity_smoother)/launch/velocity_smoother.launch"/>
+	  <include file="$(find robot_joystick)/launch/teleop.launch"/>
+</launch>
+

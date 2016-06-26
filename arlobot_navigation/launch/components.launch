@@ -1,0 +1,14 @@
+<launch>
+	<!-- run serial node -->
+	<include file="$(find robot_serial)/launch/robot_serial.launch"/>
+  
+  	<!-- run lasertf node -->
+	<include file="$(find robot_laser_tf)/launch/laser_tf.launch"/>
+	
+	<include file="$(find robot_joystick)/launch/teleop.launch"/>
+	
+	<include file="$(find yocs_cmd_vel_mux)/launch/standalone.launch"/>
+	
+	<include file="$(find yocs_velocity_smoother)/launch/velocity_smoother.launch"/>
+	
+</launch>

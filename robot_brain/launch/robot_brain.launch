@@ -1,0 +1,5 @@
+<launch>
+  <!-- run highlevel controller -->
+  <node pkg="robot_brain" type="main" name="main" output="screen">	
+  </node>
+</launch>

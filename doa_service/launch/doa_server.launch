@@ -1,0 +1,5 @@
+  <launch>
+  	<!-- run doa_service node -->
+  	<node pkg="doa_service" type="doa_server" name="doa_server" output="screen" ns="doa_service">
+  	</node>
+  </launch>

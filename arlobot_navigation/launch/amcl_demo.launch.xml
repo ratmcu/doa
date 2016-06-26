@@ -1,0 +1,28 @@
+<launch>
+  <!-- https://github.com/ros-planning/navigation/issues/206 -->
+  <rosparam command="delete" ns="move_base" />
+  <master auto="start"/>
+
+  <!-- run hokuyo node -->
+  <node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo_node" output="screen">
+  	<param name="port" type="string" value="/dev/ttyACM0" />
+	<param name="min_ang" value="-2.08621382713"/>
+	<param name="max_ang" value="2.08034976768"/>
+  </node>
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="/home/ratmcu/indigo_ws/maps/map_visionLab_0.pgm 0.010000"/>
+
+  <arg name="initial_pose_x" default="12.5200"/> <!-- Use 17.0 for willow's map in simulation -->
+  <arg name="initial_pose_y" default="13.8000"/> <!-- Use 17.0 for willow's map in simulation -->
+  <arg name="initial_pose_a" default="0.0"/>
+  <include file="$(find arlobot_navigation)/launch/includes/amcl.launch.xml">
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
+  </include>
+
+  <include file="$(find arlobot_navigation)/launch/includes/move_base.launch.xml"/>
+
+</launch>
+
